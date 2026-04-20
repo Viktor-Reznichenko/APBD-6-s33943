@@ -1,10 +1,11 @@
-﻿using APBD_6.Models;
+﻿using APBD_6.DTOs;
+using APBD_6.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APBD_6.Controllers;
 
 [Route("api/[controller]")]
-[ApiController]
+[ApiController] 
 public class RoomsController : ControllerBase
 {
     public static List<Room> rooms = new List<Room>()
@@ -45,14 +46,20 @@ public class RoomsController : ControllerBase
     
     
     [HttpPost]
-    public IActionResult Post(Room room)
+    public IActionResult Post([FromBody] CreateRoomDTO roomDTO)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
-        room.Id = rooms.Max(r => r.Id) + 1;
+        var room = new Room()
+        {
+            Id = rooms.Count + 1,
+            Name = roomDTO.Name,
+            BuildingCode = roomDTO.BuildingCode,
+            Capacity = roomDTO.Capacity,
+            IsActive = roomDTO.IsActive,
+            HasProjector = roomDTO.HasProjector,
+            Floor = roomDTO.Floor,
+            
+        };
         rooms.Add(room);
-
         return CreatedAtAction(nameof(GetById), new { id = room.Id }, room);
     }
 
