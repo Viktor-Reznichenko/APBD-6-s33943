@@ -11,13 +11,15 @@ public class ReservationsController : ControllerBase
     public static List<Reservation> reservations = new List<Reservation>()
     {
         new Reservation(){Id =1, RoomId = 1, StartTime = new DateTime(2026, 5, 10, 8, 30, 0), EndTime = new DateTime(2026, 4, 21, 10, 0, 0), Date = new DateTime(2026, 4, 21), OrganizerName = "John Doe", Status = "Active", Topic = "PJC"},  
+        new Reservation(){Id =2, RoomId = 2, StartTime = new DateTime(2026, 5, 10, 10, 15, 0), EndTime = new DateTime(2026, 4, 21, 11, 45, 0), Date = new DateTime(2026, 4, 21), OrganizerName = "John Smith", Status = "Active", Topic = "PPJ"},  
+        new Reservation(){Id =3, RoomId = 3, StartTime = new DateTime(2026, 5, 10, 12, 15, 0), EndTime = new DateTime(2026, 4, 21, 13, 45, 0), Date = new DateTime(2026, 4, 21), OrganizerName = "Robert Johnson", Status = "Active", Topic = "ANG"},  
+        new Reservation(){Id =4, RoomId = 4, StartTime = new DateTime(2026, 5, 10, 10, 15, 0), EndTime = new DateTime(2026, 4, 21, 11, 45, 0), Date = new DateTime(2026, 4, 21), OrganizerName = "Jack McDonald", Status = "Active", Topic = "RBD"},  
     };
     
     
     [HttpGet]
     public IActionResult Get([FromQuery] int? id = 0)
     {
-        // 200 ok
         return Ok(reservations);
     }
     

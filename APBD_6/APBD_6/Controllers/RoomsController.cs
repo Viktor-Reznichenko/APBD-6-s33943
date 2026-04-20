@@ -10,9 +10,12 @@ public class RoomsController : ControllerBase
 {
     public static List<Room> rooms = new List<Room>()
     {
-     new Room(){Id =1, Name ="254", BuildingCode = "B", Capacity  = 16, Floor = 3, HasProjector = true, IsActive = true},  
+     new Room(){Id =1, Name ="253", BuildingCode = "B", Capacity  = 16, Floor = 2, HasProjector = true, IsActive = true},  
+     new Room(){Id =2, Name ="303", BuildingCode = "A", Capacity  = 16, Floor = 3, HasProjector = false, IsActive = true},  
+     new Room(){Id =3, Name ="123", BuildingCode = "A", Capacity  = 16, Floor = 1, HasProjector = true, IsActive = true},  
+     new Room(){Id =4, Name ="321", BuildingCode = "C", Capacity  = 16, Floor = 3, HasProjector = true, IsActive = true},  
     };
-    //GET api/rooms
+    
     [HttpGet]
     public IActionResult Get([FromQuery] int? id = 0)
     {
