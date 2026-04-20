@@ -7,7 +7,7 @@ public class RoomsController : ControllerBase
 {
     public static List<Room> rooms = new List<Room>()
     {
-       
+     new Room(){Id =1, Name ="254", BuildingCode = "B", Capacity  = 16, Floor = 3, HasProjector = true, IsActive = true},  
     };
     //GET api/rooms
     [HttpGet]
@@ -40,5 +40,19 @@ public class RoomsController : ControllerBase
         }
         return Ok(buildingRooms);
     }
+    
+    
+    [HttpPost]
+    public IActionResult Post(Room room)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        room.Id = rooms.Max(r => r.Id) + 1;
+        rooms.Add(room);
+
+        return CreatedAtAction(nameof(GetById), new { id = room.Id }, room);
+    }
+
     
 }
