@@ -13,6 +13,7 @@ public class ReservationsController : ControllerBase
         new Reservation(){Id =1, RoomId = 1, StartTime = new DateTime(2026, 5, 10, 8, 30, 0), EndTime = new DateTime(2026, 4, 21, 10, 0, 0), Date = new DateTime(2026, 4, 21), OrganizerName = "John Doe", Status = "Active", Topic = "PJC"},  
     };
     
+    
     [HttpGet]
     public IActionResult Get([FromQuery] int? id = 0)
     {
