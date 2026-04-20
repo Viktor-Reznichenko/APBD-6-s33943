@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace APBD_6.Controllers;
 
+[Route("api/[controller]")]
+[ApiController]
 public class RoomsController : ControllerBase
 {
     public static List<Room> rooms = new List<Room>()
