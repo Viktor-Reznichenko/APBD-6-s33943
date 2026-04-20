@@ -62,6 +62,24 @@ public class RoomsController : ControllerBase
         rooms.Add(room);
         return CreatedAtAction(nameof(GetById), new { id = room.Id }, room);
     }
+    
+    
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Room room)
+    {
 
+        var existing = rooms.FirstOrDefault(r => r.Id == id);
+        if (existing == null)
+            return NotFound();
+
+        existing.Name = room.Name;
+        existing.BuildingCode = room.BuildingCode;
+        existing.Floor = room.Floor;
+        existing.Capacity = room.Capacity;
+        existing.HasProjector = room.HasProjector;
+        existing.IsActive = room.IsActive;
+
+        return Ok(existing);
+    }
     
 }
