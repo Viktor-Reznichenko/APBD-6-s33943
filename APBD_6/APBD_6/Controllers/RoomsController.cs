@@ -19,7 +19,6 @@ public class RoomsController : ControllerBase
     [HttpGet]
     public IActionResult Get([FromQuery] int? id = 0)
     {
-        // 200 ok
         return Ok(rooms);
     }
     
